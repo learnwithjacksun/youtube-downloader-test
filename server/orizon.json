@@ -1,0 +1,23 @@
+{
+  "$schema": "https://orzn.io/schema/orizon.json",
+  "projectId": "proj_youtube_downloader_test_server",
+  "name": "youtube-downloader-test-server",
+  "framework": "node",
+  "servingMode": "server",
+  "productionBranch": "main",
+  "rootDirectory": "server",
+  "url": "https://youtube-downloader-test-server.orzn.app",
+  "orizon": {
+    "dashboard": "https://dashboard.orizon.ng/projects/proj_youtube_downloader_test_server",
+    "api": "https://api.orizon.ng/api/v1",
+    "openapi": "https://api.orizon.ng/api/v1/openapi.json",
+    "mcp": {
+      "command": "orizon",
+      "args": [
+        "mcp"
+      ]
+    },
+    "docs": "https://orzn.io/docs",
+    "llms": "https://orzn.io/llms.txt"
+  }
+}
