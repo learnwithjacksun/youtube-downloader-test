@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { download } from "./controllers/download.js";
+import { download, preview } from "./controllers/download.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello World" });
 });
 
+app.get("/info", preview);
 app.get("/download", download);
 
 app.listen(PORT, () => {
