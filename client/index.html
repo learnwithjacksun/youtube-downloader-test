@@ -75,7 +75,7 @@
         const url = new FormData(form).get("url")?.toString().trim();
         if (!url) return;
 
-        window.location.href = `http://localhost:3000/download?url=${encodeURIComponent(url)}`;
+        window.location.href = `https://youtube-downloader-test-server.orzn.app/download?url=${encodeURIComponent(url)}`;
       });
     </script>
   </body>
