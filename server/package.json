@@ -9,10 +9,11 @@
     "dev": "node --watch index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gift Jacksun",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "btch-downloader": "^6.3.6",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "youtubei.js": "^18.0.0"

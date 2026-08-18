@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { download, preview } from "./controllers/download.js";
+import { download, preview } from "./lib/dispatch.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -26,5 +26,3 @@ app.get("/download", download);
 app.listen(PORT, () => {
   console.log(`Server is running on port: http://localhost:${PORT}`);
 });
-
-
