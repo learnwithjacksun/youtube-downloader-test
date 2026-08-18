@@ -120,3 +120,35 @@ if (tryForm && tryUrl) {
     }
   });
 }
+
+const trySearchForm = document.getElementById("try-search-form");
+const trySearchOutput = document.getElementById("try-search-output");
+const trySearchStatus = document.getElementById("try-search-status");
+
+if (trySearchForm && trySearchOutput) {
+  trySearchForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const q = new FormData(trySearchForm).get("q")?.toString().trim();
+    if (!q) return;
+
+    trySearchStatus.textContent = "Searching YouTube…";
+    try {
+      const response = await fetch(
+        `${API_BASE}/search?q=${encodeURIComponent(q)}`,
+      );
+      const data = await response.json();
+      trySearchOutput.textContent = JSON.stringify(data, null, 2);
+      trySearchOutput.className = "language-json";
+      if (window.hljs) window.hljs.highlightElement(trySearchOutput);
+      const count = Array.isArray(data.videos) ? ` · ${data.videos.length} videos` : "";
+      trySearchStatus.textContent = `${response.status} ${response.statusText}${count}`;
+    } catch (error) {
+      trySearchOutput.textContent = JSON.stringify(
+        { message: error.message || "Request failed" },
+        null,
+        2,
+      );
+      trySearchStatus.textContent = "Request failed";
+    }
+  });
+}

@@ -18,7 +18,7 @@ const PLATFORMS = [
   { id: "mediafire", href: "./mediafire.html", label: "MediaFire" },
   { id: "spotify", href: "./spotify.html", label: "Spotify" },
   { id: "soundcloud", href: "./soundcloud.html", label: "SoundCloud" },
-  { id: "yts", href: "./yts.html", label: "YTS" },
+  { id: "yts", href: "./yts.html", label: "YouTube Search" },
 ];
 
 function platformLinkClass(active) {

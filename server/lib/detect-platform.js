@@ -17,7 +17,6 @@ export const PLATFORMS = [
   "mediafire",
   "spotify",
   "soundcloud",
-  "yts",
 ];
 
 const MATCHERS = [
@@ -54,7 +53,7 @@ function detectFromInput(input, hint) {
   if (!input) return null;
   if (!isHttpUrl(input)) {
     if (hint === "pinterest") return "pinterest";
-    return "yts";
+    return null;
   }
 
   for (const [platform, pattern] of MATCHERS) {

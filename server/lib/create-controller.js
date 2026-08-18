@@ -1,4 +1,3 @@
-import { youtube } from "btch-downloader";
 import { proxyDownload, safeFilename } from "./proxy-download.js";
 import { normalize } from "./normalize.js";
 
@@ -8,7 +7,7 @@ function httpError(status, message) {
   return error;
 }
 
-export function createPlatformController(platform, fetchFn, options = {}) {
+export function createPlatformController(platform, fetchFn) {
   async function loadInfo(query) {
     if (!query) throw httpError(400, "URL is required");
     const raw = await fetchFn(query);
@@ -20,17 +19,7 @@ export function createPlatformController(platform, fetchFn, options = {}) {
     return info;
   }
 
-  async function resolveFormat(query, id, info) {
-    if (platform === "yts" && options.resolveYts) {
-      const selected = info.formats.find((item) => String(item.id) === String(id));
-      if (!selected) throw httpError(400, "Unknown format");
-      const youtubeInfo = normalize("youtube", await youtube(selected.url));
-      const file =
-        youtubeInfo.formats.find((item) => item.id === "mp4") || youtubeInfo.formats[0];
-      if (!file) throw httpError(502, "No downloadable YouTube file for that result");
-      return { info: { ...youtubeInfo, title: selected.label }, format: file };
-    }
-
+  async function resolveFormat(id, info) {
     const format = info.formats.find((item) => String(item.id) === String(id)) || info.formats[0];
     if (!format) throw httpError(400, "No downloadable formats found");
     return { info, format };
@@ -58,7 +47,7 @@ export function createPlatformController(platform, fetchFn, options = {}) {
         const query = req.query.url;
         const id = req.query.id;
         const info = await loadInfo(query);
-        const resolved = await resolveFormat(query, id, info);
+        const resolved = await resolveFormat(id, info);
         const extension =
           resolved.format.kind === "audio"
             ? "mp3"

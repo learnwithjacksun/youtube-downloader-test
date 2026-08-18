@@ -339,26 +339,6 @@ export function normalize(platform, raw) {
         ].filter(Boolean),
       });
 
-    case "yts": {
-      const results = (
-        Array.isArray(raw?.result) ? raw.result : asArray(raw?.result)
-      ).filter((item) => item && (item.url || item.videoId));
-      return pack(platform, raw, {
-        title: "YouTube search",
-        thumbnail: firstString(results[0]?.thumbnail),
-        previewType: "image",
-        previewUrl: firstString(results[0]?.thumbnail),
-        formats: results.map((item, index) =>
-          formatItem(
-            item.videoId || `result-${index}`,
-            [item.title, item.duration, item.author].filter(Boolean).join(" · "),
-            item.url || `https://www.youtube.com/watch?v=${item.videoId}`,
-            "video",
-          ),
-        ),
-      });
-    }
-
     default:
       return pack(platform, raw, { title: "Unknown", formats: [] });
   }

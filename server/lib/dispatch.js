@@ -17,7 +17,6 @@ import * as gdrive from "../controllers/gdrive.js";
 import * as mediafire from "../controllers/mediafire.js";
 import * as spotify from "../controllers/spotify.js";
 import * as soundcloud from "../controllers/soundcloud.js";
-import * as yts from "../controllers/yts.js";
 
 const controllers = {
   youtube,
@@ -38,7 +37,6 @@ const controllers = {
   mediafire,
   spotify,
   soundcloud,
-  yts,
 };
 
 function handler(action) {
