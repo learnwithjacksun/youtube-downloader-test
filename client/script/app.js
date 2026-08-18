@@ -7,8 +7,6 @@ const API_BASE =
     ? "http://localhost:3000"
     : PRODUCTION_API);
 
-
-
 const form = document.getElementById("preview-form");
 if (form) {
   const pagePlatform = document.body.dataset.platform || "";
@@ -57,7 +55,8 @@ if (form) {
       }
       const audio = document.createElement("audio");
       audio.controls = true;
-      audio.className = "absolute bottom-3 left-3 right-3 w-[calc(100%-1.5rem)]";
+      audio.className =
+        "absolute bottom-3 left-3 right-3 w-[calc(100%-1.5rem)]";
       audio.src = url;
       mediaEl.classList.add("relative");
       mediaEl.append(audio);
@@ -85,7 +84,8 @@ if (form) {
 
     try {
       const params = new URLSearchParams({ url: query });
-      if (pagePlatform && pagePlatform !== "all") params.set("platform", pagePlatform);
+      if (pagePlatform && pagePlatform !== "all")
+        params.set("platform", pagePlatform);
       const response = await fetch(`${API_BASE}/info?${params}`);
       const data = await response.json();
       if (!response.ok) {
@@ -98,9 +98,16 @@ if (form) {
       currentQuery = query;
       currentPlatform = data.platform || pagePlatform;
       titleEl.textContent = data.title;
-      metaEl.textContent = [data.author, data.platform].filter(Boolean).join(" · ");
+      metaEl.textContent = [data.author, data.platform]
+        .filter(Boolean)
+        .join(" · ");
       if (noteEl) {
-        if (pagePlatform && pagePlatform !== "all" && data.platform && data.platform !== pagePlatform) {
+        if (
+          pagePlatform &&
+          pagePlatform !== "all" &&
+          data.platform &&
+          data.platform !== pagePlatform
+        ) {
           noteEl.textContent = `This link was detected as ${data.platform}.`;
           noteEl.classList.remove("hidden");
         } else {
@@ -109,8 +116,7 @@ if (form) {
       }
       formatEl.innerHTML = data.formats
         .map(
-          (format) =>
-            `<option value="${format.id}">${format.label}</option>`,
+          (format) => `<option value="${format.id}">${format.label}</option>`,
         )
         .join("");
       renderPreview(data);

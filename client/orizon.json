@@ -6,16 +6,14 @@
   "servingMode": "static",
   "productionBranch": "main",
   "rootDirectory": "client",
-  "url": "https://youtube-downloader-test.orzn.app",
+  "url": "https://streamsaver.orzn.app",
   "orizon": {
     "dashboard": "https://dashboard.orizon.ng/projects/proj_youtube_downloader_test",
     "api": "https://api.orizon.ng/api/v1",
     "openapi": "https://api.orizon.ng/api/v1/openapi.json",
     "mcp": {
       "command": "orizon",
-      "args": [
-        "mcp"
-      ]
+      "args": ["mcp"]
     },
     "docs": "https://orzn.io/docs",
     "llms": "https://orzn.io/llms.txt"

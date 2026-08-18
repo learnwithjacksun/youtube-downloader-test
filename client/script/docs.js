@@ -1,4 +1,4 @@
-const PRODUCTION_API = "https://youtube-downloader-test-server.orzn.app";
+const PRODUCTION_API = "https://streamsaver-api.orzn.app";
 
 function resolveApiBase() {
   if (
@@ -59,10 +59,22 @@ const tryExamples = document.getElementById("try-examples");
 const EXAMPLES = [
   { label: "YouTube", url: "https://youtu.be/dQw4w9WgXcQ" },
   { label: "Instagram", url: "https://www.instagram.com/reel/DKPtUL_S9Nh/" },
-  { label: "TikTok", url: "https://www.tiktok.com/@omagadsus/video/7025456384175017243" },
-  { label: "Facebook", url: "https://www.facebook.com/watch/?v=1393572814172251" },
-  { label: "Twitter / X", url: "https://twitter.com/gofoodindonesia/status/1229369819511709697" },
-  { label: "SoundCloud", url: "https://soundcloud.com/issabella-marchelina/sisa-rasa-mahalini-official-audio" },
+  {
+    label: "TikTok",
+    url: "https://www.tiktok.com/@omagadsus/video/7025456384175017243",
+  },
+  {
+    label: "Facebook",
+    url: "https://www.facebook.com/watch/?v=1393572814172251",
+  },
+  {
+    label: "Twitter / X",
+    url: "https://twitter.com/gofoodindonesia/status/1229369819511709697",
+  },
+  {
+    label: "SoundCloud",
+    url: "https://soundcloud.com/issabella-marchelina/sisa-rasa-mahalini-official-audio",
+  },
 ];
 
 if (tryForm && tryUrl) {
